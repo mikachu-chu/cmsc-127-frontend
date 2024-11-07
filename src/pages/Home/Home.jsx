@@ -7,6 +7,7 @@ import axiosInstance from '../../utilities/axiosInstance';
 const Home = () => {
 
   const [userInfo, setUserInfo] = useState(null);
+  const [advisees, setAdvisees] = useState([]);
 
   const navigate = useNavigate();
 
@@ -24,8 +25,20 @@ const Home = () => {
     }
   };
 
+  const getAllAdvisees = async () => {
+    try {
+      const response = await axiosInstance.get("/advisers/getAllAdvisees");
+      if (response.data) {
+        setAdvisees(response.data.advisees);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getUserInfo();
+    getAllAdvisees();
     return () => {};
   }, []);
 
@@ -36,6 +49,11 @@ const Home = () => {
       <Typography variant="h6" color="text">You have the adviser ID: {userInfo?.adviser_id}</Typography>
       <Typography variant="h6" color="text">Department: {userInfo?.department}</Typography>
       <Typography variant="h6" color="text">Position: {userInfo?.position}</Typography>
+      <break></break>
+      <Typography variant="h6" color="text">Here is a list of your advisees:</Typography>
+      {advisees.map((advisee) => (
+        <Typography variant="h6" color="text">Name: {advisee?.first_name} {advisee?.middle_name} {advisee?.last_name} under {advisee?.program_name} of year {advisee?.year}</Typography>
+      ))}
     </Container>
   )
 }
