@@ -14,7 +14,7 @@ const Navbar = ({user}) => {
   };
 
   return (
-    <AppBar position="static" color="primary" sx ={{p:2, mb:{xs:2, xl:15}, flexDirection:'row'}}>
+    <AppBar position="static" color="primary" sx ={{p:2, mb:2, flexDirection:'row'}}>
       <Typography variant="h4" sx={{ fontSize: { sm: 20, md: 24 }, flexGrow: 1}}>
         Advising and Checklist System
       </Typography>
