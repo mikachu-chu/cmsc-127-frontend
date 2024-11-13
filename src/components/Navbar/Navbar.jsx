@@ -4,8 +4,6 @@ import { useNavigate } from 'react-router-dom';
 
 const Navbar = ({user}) => {
   
-  console.log(user)
-  
   const navigate = useNavigate();
 
   const onLogout = () => {
@@ -19,7 +17,7 @@ const Navbar = ({user}) => {
         Advising and Checklist System
       </Typography>
       {user?<Button color="inherit" onClick={onLogout}>Logout</Button>:null}
-      </AppBar>
+    </AppBar>
     )
 }
 

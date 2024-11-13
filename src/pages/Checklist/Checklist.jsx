@@ -42,6 +42,10 @@ const Checklist = () => {
     }
   };
 
+  const handleBack = () => {
+    navigate("/Home");
+  };
+
   const getAllCourses = async () => {
     try {
       const response = await axiosInstance.get(`/advisers/getChecklist/${data.student_id}`);
@@ -66,6 +70,7 @@ const Checklist = () => {
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 , alignItems: 'center'}}>
           <StudendCard studentInfo={data} />
           <Button variant="contained" sx={{ height: 40 , width: "100%"}} onClick={ handleTagged }>{data.status?"Remove Tag Status":"Tag Student"}</Button>
+          <Button variant="contained" sx={{ height: 40 , width: "100%"}} onClick={ handleBack }>Back</Button>
         </Box>
         <CoursesTable courses={courses} />
       </Box>
