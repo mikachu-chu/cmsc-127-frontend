@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Navbar from '../../components/Navbar/Navbar'
-import { Box, Container, Typography } from '@mui/material'
+import { Box, Container, CircularProgress } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import AdviseesTable from '../../components/Table/AdviseesTable'
 import axiosInstance from '../../utilities/axiosInstance';
@@ -10,6 +10,7 @@ const Home = () => {
 
   const [userInfo, setUserInfo] = useState(null);
   const [advisees, setAdvisees] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const navigate = useNavigate();
 
@@ -32,6 +33,7 @@ const Home = () => {
       const response = await axiosInstance.get("/advisers/getAllAdvisees");
       if (response.data) {
         setAdvisees(response.data.advisees);
+        setIsLoading(false);
       }
     } catch (error) {
       console.log(error);
@@ -50,7 +52,10 @@ const Home = () => {
       <Box sx={{ display: 'flex', gap: 2, mx: 2, my: 'auto'}}>
         <AdviserCard userInfo={userInfo} />
         <Box>
-          <AdviseesTable advisees={advisees} />
+        {isLoading ? (
+            <CircularProgress sx={{ margin: 'auto' }} /> 
+          ) : (
+          <AdviseesTable advisees={advisees} />)}
         </Box>
       </Box>
     </Container>
