@@ -27,7 +27,7 @@ const LoginCard = () => {
   };
 
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', mt:25}}>
       <Card sx={{ p:3, boxShadow:3 }} variant="outlined">
         <Typography variant="h3" color="text">Welcome Back!</Typography>
         <Typography color="textSecondary" gutterBottom>Please Log-in to your account</Typography>
