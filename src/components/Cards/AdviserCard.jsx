@@ -1,10 +1,10 @@
 import React from 'react';
-import { Box, Card, CardContent, Typography, Divider } from '@mui/material';
+import { Box, Card, CardContent, Typography, Divider, Stack} from '@mui/material';
 
 const AdviserCard = ({ userInfo }) => {
   return (
-    <Box sx={{ maxWidth: 600, my: 'auto', mx: 'auto'}}>
-      <Card variant="outlined">
+    <Stack>
+      <Card variant="outlined" sx={{boxShadow:3}}>
         <CardContent>
           <Typography variant="h4" color="primary" gutterBottom>
             Adviser Profile
@@ -43,7 +43,7 @@ const AdviserCard = ({ userInfo }) => {
           </Box>
         </CardContent>
       </Card>
-    </Box>
+    </Stack>
   )
 }
 

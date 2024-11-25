@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import Navbar from '../../components/Navbar/Navbar'
-import { Box, Container, CircularProgress } from '@mui/material'
+import { Box, Container, CircularProgress, Stack, LinearProgress} from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import AdviseesTable from '../../components/Table/AdviseesTable'
 import axiosInstance from '../../utilities/axiosInstance';
 import AdviserCard from '../../components/Cards/AdviserCard'
+
 
 const Home = () => {
 
@@ -47,17 +48,19 @@ const Home = () => {
   }, []);
 
   return (
-    <Container>
+    <Container maxWidth="xl">
       <Navbar user={userInfo}/>
-      <Box sx={{ display: 'flex', gap: 2, mx: 2, my: 'auto'}}>
-        <AdviserCard userInfo={userInfo} />
-        <Box>
-        {isLoading ? (
-            <CircularProgress sx={{ margin: 'auto' }} /> 
-          ) : (
-          <AdviseesTable advisees={advisees} />)}
-        </Box>
-      </Box>
+      {isLoading ? (<LinearProgress />) :(
+        <Stack direction="row" spacing={2} justifyContent={"space-evenly"}>
+          <AdviserCard userInfo={userInfo} />
+          <Box>
+          {isLoading ? (
+              <CircularProgress sx={{ margin: 'auto' }} /> 
+            ) : (
+            <AdviseesTable advisees={advisees} />)}
+          </Box>
+        </Stack>
+      )}
     </Container>
   )
 }

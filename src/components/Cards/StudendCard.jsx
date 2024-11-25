@@ -1,13 +1,13 @@
 import React from 'react'
-import { Box, Card, CardContent, Typography, Divider } from '@mui/material';
+import { Box, Card, CardContent, Typography, Divider, Stack } from '@mui/material';
 import getYear from '../../utilities/getYear';
 
 const StudendCard = ({studentInfo}) => {
   return (
-    <Box sx={{ width: 'auto'}}>
+    <Stack>
       <Card variant="outlined">
         <CardContent>
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1}}>
+          <Stack gap={2}>
             <Box>
             <Typography variant="h4" color="primary" gutterBottom>
               Student Profile
@@ -38,10 +38,10 @@ const StudendCard = ({studentInfo}) => {
                 {getYear(studentInfo?.year)} - {studentInfo?.program_name}
               </Typography>
             </Box>
-          </Box>
+          </Stack>
         </CardContent>
       </Card>
-    </Box>
+    </Stack>
   );
 }
 

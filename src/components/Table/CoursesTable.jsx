@@ -45,17 +45,11 @@ const CoursesTable = ({courses}) => {
                 <TableCell sx={{ textAlign: 'center' }}>{course.name}</TableCell>
               </Tooltip>
               <TableCell sx={{ textAlign: 'center' }}>{course.status ? "Taken" : "Not Taken"}</TableCell>
-              {SecondSemFirstYear[index] ? (
-                <>
-                  <TableCell sx={{ textAlign: 'center' }}>{SecondSemFirstYear[index].course_id}</TableCell>
-                  <Tooltip title={SecondSemFirstYear[index].description} followCursor>
-                    <TableCell sx={{ textAlign: 'center' }}>{SecondSemFirstYear[index].name}</TableCell>
-                  </Tooltip>
-                  <TableCell sx={{ textAlign: 'center' }}>{SecondSemFirstYear[index].status ? "Taken" : "Not Taken"}</TableCell>
-                </>
-              ) : (
-                <TableCell colSpan={3} sx={{ textAlign: 'center' }} />
-              )}
+                <TableCell sx={{ textAlign: 'center' }}>{SecondSemFirstYear[index].course_id}</TableCell>
+                <Tooltip title={SecondSemFirstYear[index].description} followCursor>
+                  <TableCell sx={{ textAlign: 'center' }}>{SecondSemFirstYear[index].name}</TableCell>
+                </Tooltip>
+                <TableCell sx={{ textAlign: 'center' }}>{SecondSemFirstYear[index].status ? "Taken" : "Not Taken"}</TableCell>
             </TableRow>
           ))}
         </TableBody>

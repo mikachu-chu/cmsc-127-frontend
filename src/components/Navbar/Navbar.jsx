@@ -1,6 +1,7 @@
 import React from 'react';
 import { AppBar, Button, Typography} from '@mui/material/';
 import { useNavigate } from 'react-router-dom';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const Navbar = ({user}) => {
   
@@ -16,7 +17,7 @@ const Navbar = ({user}) => {
       <Typography variant="h4" sx={{ fontSize: { sm: 20, md: 24 }, flexGrow: 1}}>
         Advising and Checklist System
       </Typography>
-      {user?<Button color="inherit" onClick={onLogout}>Logout</Button>:null}
+      {user?<Button color="inherit" onClick={onLogout} startIcon={<LogoutIcon/>}>Logout</Button>:null}
     </AppBar>
     )
 }

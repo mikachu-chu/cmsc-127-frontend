@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import {Typography, TextField, Button, Card, Box} from '@mui/material/'
 import axiosInstance from '../../utilities/axiosInstance';
+import LoginIcon from '@mui/icons-material/Login';
 
 const LoginCard = () => {
 
@@ -46,7 +47,7 @@ const LoginCard = () => {
             required
             autoComplete="off"
             onChange={(e) => setPassword(e.target.value)}/>    
-          <Button variant="contained" sx={{p:2}} type="submit">Login</Button>
+          <Button startIcon={<LoginIcon />} variant="contained" sx={{p:2}} type="submit">Login</Button>
         </Box>
       </Card>
     </Box>
