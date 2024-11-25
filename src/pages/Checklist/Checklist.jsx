@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom';
-import { Container, Box, Button, CircularProgress } from '@mui/material';
+import { Container, Box, Button, LinearProgress, Stack } from '@mui/material';
 import axiosInstance from '../../utilities/axiosInstance';
 import StudendCard from '../../components/Cards/StudendCard';
 import Navbar from '../../components/Navbar/Navbar';
@@ -68,18 +68,18 @@ const Checklist = () => {
   return (
     <Container maxWidth="xl">
       <Navbar user={userInfo}/>
-      <Box sx={{ display: 'flex', gap: 2, mx: 2, my: 'auto'}}>
+      { isLoading ? (
+        <LinearProgress />
+      ) : (
+        <Stack direction="row" spacing={2}>
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 , alignItems: 'center', width: '30%'}}>
           <StudendCard studentInfo={data} />
-          <Button variant="contained" sx={{ height: 40 , width: "100%"}} onClick={ handleTagged }>{data.status?"Remove Tag Status":"Tag Student"}</Button>
-          <Button variant="contained" sx={{ height: 40 , width: "100%"}} onClick={ handleBack }>Back</Button>
+          <Button variant="contained" color="primary" sx={{ height: 40 , width: "100%"}} onClick={ handleTagged }>{data.status?"Remove Tag Status":"Tag Student"}</Button>
+          <Button variant="contained" color="secondary" sx={{ height: 40 , width: "100%"}} onClick={ handleBack }>Back</Button>
         </Box>
-          {isLoading ? (
-            <CircularProgress sx={{ margin: 'auto' }} /> // Render a loading indicator while data is being fetched
-          ) : (
-            <CoursesTable courses={courses} /> // Render the CoursesTable component when data is received
-          )}
-      </Box>
+        <CoursesTable courses={courses} />
+      </Stack>
+      )}
     </Container>
   );
 }

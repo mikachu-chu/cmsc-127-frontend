@@ -1,9 +1,10 @@
 import React from 'react'
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, Box} from '@mui/material';
 import axiosInstance from '../../utilities/axiosInstance';
-import { responsiveFontSizes, styled } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import getYear from '../../utilities/getYear';
+import WysiwygIcon from '@mui/icons-material/Wysiwyg';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   fontWeight: 'bold',
@@ -47,13 +48,14 @@ const AdviseesTable = ({advisees}) => {
               <TableCell>{advisee.status?"Tagged":"Not Tagged"}</TableCell>
               <TableCell>
                 <Box sx={{display: 'flex', gap: 1}}>
-                  <Button variant="contained" color="primary" size="small"
+                  <Button variant="contained" color="primary"
+                    startIcon={<WysiwygIcon />}
                     onClick={() => {
                       navigate(`/viewChecklist`, {state: advisee} );
                     }}>
                     View Checklist
                   </Button>
-                  <Button variant="contained" color="warning" size="small" onClick={() => handleDelete(advisee.student_id)}>
+                  <Button variant="contained" color="warning" onClick={() => handleDelete(advisee.student_id)}>
                     Expel
                   </Button>
                 </Box>

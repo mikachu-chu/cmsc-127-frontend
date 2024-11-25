@@ -5,25 +5,25 @@ import './index.css'
 import { createTheme, ThemeProvider } from '@mui/material'
 
 const createdTheme = createTheme({
-    palette: {
-        primary: {
-            main: '#776c94'
-        },
-        secondary: {
-            main: '#aea6c5',
-            light: '#aea6c5',
-            dark: '#423a59',
-        },
+  palette: {
+    type: 'light',
+    primary: {
+      main: '#800000',
     },
-    typography: {
-        fontFamily: 'Arvo',
-    }
+    secondary: {
+      main: '#e0d85f',
+    },
+    background: {
+      default: '#efefef',
+      paper: '#ffffff',
+    },
+  },
 })
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <ThemeProvider theme={createdTheme}>
-        <React.StrictMode>
-            <App />
-        </React.StrictMode>
-    </ThemeProvider>
+  <ThemeProvider theme={createdTheme}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </ThemeProvider>
 )
